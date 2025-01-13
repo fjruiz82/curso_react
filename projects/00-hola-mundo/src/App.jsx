@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { TwitterFollowCard } from './TwitterFollowCard.jsx'
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+    //le podemos pasar una funci'on como prop
+    const formatUserName = (userName) => `@${userName}`
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        //<> es lo mismo que <React.Fragment>
+        //si paso el voleano sin ningun valor se entiende true
+        //si no paso alguna prop, se entiende undefined, (q es falsy)
+        <div className='App'>
+            <TwitterFollowCard formatUserName={formatUserName} userName="dog" name="Sir Dog" isFollowing={true} />
+            <TwitterFollowCard formatUserName={formatUserName} userName="animal" name="Sir Monster" isFollowing={false} />
+            <TwitterFollowCard formatUserName={formatUserName} userName="unicorn" name="Sir Unicorn" isFollowing />
+            <TwitterFollowCard formatUserName={formatUserName} userName="horse" name="Sir Fox" />
+        </div>
+    )
 }
-
-export default App
